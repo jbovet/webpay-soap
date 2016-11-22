@@ -7,12 +7,14 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('se.transmode.gradle:gradle-docker:1.2')
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
+apply plugin: 'docker'
 
 jar {
     baseName = 'webpay-soa'
@@ -50,4 +52,15 @@ dependencies {
     providedRuntime('javax.servlet:jstl')
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+task buildDocker(type: Docker, dependsOn: build) {
+    applicationName = war.baseName
+    dockerfile = file('docker/Dockerfile')
+    doFirst {
+        copy {
+            from war
+            into stageDir
+        }
+    }
 }
