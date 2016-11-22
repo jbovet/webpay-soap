@@ -3,6 +3,10 @@ Ejemplo de Integración servicio webpay-soa con springboot 1.4.2 + cxf 3.1.x
 
 # Ambiente de Integracion
 
+Ejecutar: ./gradlew bootRun
+
+abrir   http://localhost:8069/
+
 Para autenticar, el usuario (RUT) a ingresar es 11.111.111-1 y la clave es 123.
 
 
