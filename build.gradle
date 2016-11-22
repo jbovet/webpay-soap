@@ -1,0 +1,53 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+
+jar {
+    baseName = 'webpay-soa'
+    version = '0.0.1'
+}
+
+war {
+    baseName = 'webpay-soa'
+    version = '0.0.1'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile files('libs/libwebpay.jar')
+
+    compile group: 'org.apache.cxf', name: 'cxf-rt-frontend-jaxws', version: '3.1.8'
+    compile group: 'org.apache.cxf', name: 'cxf-rt-transports-http', version: '3.1.8'
+    compile ("org.apache.cxf:cxf-rt-ws-security:3.1.8")
+
+    compile('org.springframework.boot:spring-boot-starter-web') {
+        exclude module: 'org.springframework.boot:spring-boot-starter-tomcat'
+    }
+
+    compile('org.springframework.boot:spring-boot-loader')
+
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
+    providedRuntime('javax.servlet:javax.servlet-api')
+    providedRuntime('javax.servlet:jstl')
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
