@@ -82,8 +82,15 @@ public class TbkNormalController {
     }
 
     @RequestMapping(value = "/finTrx", method = RequestMethod.POST)
-    public String finalizaTrx(@RequestParam(value = "token_ws") String token_ws) {
+    public String finalizaTrx(@RequestParam(value = "token_ws", required = false) String token_ws,
+                              @RequestParam(value = "TBK_TOKEN", required = false) String tbkToken) {
         //TODO guardar token para posterior anulacion...
+
+        //TBK_TOKEN anulacion en pago - wtf?
+        //why TRANSBANK!!! why!!!
+        System.out.println(tbkToken);
+        System.out.println(token_ws);
+
         return "finPago";
     }
 
