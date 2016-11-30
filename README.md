@@ -1,5 +1,6 @@
 # Transbank Webpay SOAP
-Ejemplo de Integración servicio Webpay SOAP con springboot 1.4.2 + cxf 3.1.x
+
+Ejemplo de Integracióncon java para servicio Webpay SOAP con springboot 1.4.2 + cxf 3.1.x
 
 # Ambiente de Integracion
 
