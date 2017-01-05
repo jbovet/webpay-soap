@@ -72,6 +72,9 @@ public class TbkNormalController {
             Integer responseCode = result.getDetailOutput().get(0).getResponseCode();
             model.addAttribute("responseCode", responseCode);
             error = (!responseCode.equals(0));
+
+            //Confirmar transaccion  <!-- Timeout error(272) -->
+            //webpay.getNormalTransaction().acknowledgeTransaction(token_ws);
         }
 
         if (error) {
