@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.4.2.RELEASE'
+        springBootVersion = '1.5.13.RELEASE'
     }
     repositories {
         mavenCentral()
@@ -26,8 +26,8 @@ war {
     version = '0.0.1'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 repositories {
     mavenCentral()
