@@ -72,18 +72,6 @@ public class TbkNormalController {
             Integer responseCode = result.getDetailOutput().get(0).getResponseCode();
             model.addAttribute("responseCode", responseCode);
             error = (!responseCode.equals(0));
-
-            // SEGUN MANUAL, SE DEBE INVOCAR acknowledgeTransaction, PERO AL REALIZARLO LANZA EXEPTION <!-- Timeout error(272) -->
-            // webpay.getNormalTransaction().acknowledgeTransaction(token_ws);
-
-            //
-            // LA API DE TBK, EN METODO ...getTransactionResult(token_ws); REALIZA LA INVOCACION A acknowledgeTransaction
-            // public TransactionResultOutput getTransactionResult(String token) {
-            //      TransactionResultOutput result = this.port.getTransactionResult(token);
-            //      this.acknowledgeTransaction(token);
-            //      ...
-            // }
-
         }
 
         if (error) {
